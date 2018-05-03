@@ -5,7 +5,13 @@ html(lang="en")
     link(rel='stylesheet', href='../styles/main.css')
     link(rel='icon', href='../img/favicon.png', sizes='16x16 32x32', type='image/png')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
-    script(src='../js/main.js')
 
   body
-    h3 Simple AJAX Web Application
+    div(class='main-body')
+      h5 Testing making a request:
+      button(type='button') Make a request
+      h5 Testing making request with respons from the server:
+      label(for='ajaxTextBox') Your name:#[br]
+        input(type='text', id='ajaxTextBox')
+      button(type='button', id='ajaxButton') Get a response
+    script(src='../js/main.js')
