@@ -45,3 +45,64 @@ $.ajax({
     console.log('Error: ' + data);
   }
 });
+
+//2.1 Making a simple request for the server:
+var httpRequest;
+document.getElementsByTagName('button')[0].addEventListener('click', makeRequest);
+
+function makeRequest() {
+  httpRequest = new XMLHttpRequest();
+  if (!httpRequest) {
+    alert('Cannot create an XMLHTTP instance');
+    return false;
+  }
+  httpRequest.onreadystatechange = alertContent;
+  httpRequest.open('GET', 'test.html');
+  httpRequest.send();
+}
+
+function alertContent() {
+  try {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+      } else {
+        alert('There was a problem with the request!');
+      }
+    }
+  } catch (e) {
+    alert('Caugth Exception: ' + e.description);
+  }
+}
+
+//2.2 Making a request with response from server:
+var httpRequest2;
+document.getElementsByTagName('button')[1].onclick = function() {
+  var userName = document.getElementById('ajaxTextBox').value;
+  makeRequest2('test2.php', userName);
+}
+
+function makeRequest2(url, userName) {
+  httpRequest2 = new XMLHttpRequest();
+  if (!httpRequest2) {
+    alert('Cannot create an XMLHTTP instance');
+    return false;
+  }
+  httpRequest2.onreadystatechange = alertContent2;
+  httpRequest2.open('POST', url);
+  httpRequest2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  httpRequest2.send('userName=' + encodeURIComponent(userName));
+}
+
+function alertContent2() {
+  try {
+    if (httpRequest2.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest2.status === 200) {
+        var response = JSON.parse(httpRequest2.responseText);
+        alert(response.computedString);
+      }
+    }
+  } catch (e) {
+    alert('Caugth Exception: ' + e.description);
+  }
+}
