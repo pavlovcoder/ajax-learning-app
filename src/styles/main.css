@@ -1,3 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+html, body {
+  font-family: "Poppins", sans-serif;
+  font-size: 23px; }
 
+.main-body {
+  outline: 1px dotted #000;
+  margin: 20px;
+  padding: 20px; }
+
+h5 {
+  padding: 20px;
+  border: 1px dotted #000; }
+
+button {
+  padding: 10px 30px;
+  background: #0000ff;
+  color: #fff;
+  transition: all 0.3s ease-out;
+  border: none;
+  cursor: pointer; }
+
+button:hover {
+  background: #000080; }
+
+input {
+  padding: 7px 27px;
+  border: 3px solid #0000ff;
+  outline: none;
+  cursor: pointer; }
+
+label {
+  font-size: 18px; }
 
 /*# sourceMappingURL=main.css.map */
