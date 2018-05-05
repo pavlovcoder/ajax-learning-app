@@ -106,3 +106,62 @@ function alertContent2() {
     alert('Caugth Exception: ' + e.description);
   }
 }
+
+//2.3 Monitoring progress of getting data from the server:
+var oReq;
+var monitorOut = document.getElementsByClassName('monitor-output')[0];
+document.getElementsByTagName('button')[2].addEventListener('click', monitorRequest());
+
+function monitorRequest() {
+  oReq = new XMLHttpRequest();
+
+  if (!oReq) {
+    monitorOut.innerHTML += 'Cannot create an XMLHTTP instance!<br/>';
+    return false;
+  } else {
+    oReq.addEventListener('progress', updateProgress);
+    oReq.addEventListener('load', transferComplete);
+    oReq.addEventListener('error', transferFailed);
+    oReq.addEventListener('abort', transferCanceled);
+    oReq.onreadystatechange = outData;
+
+    oReq.open('GET', 'test3.html');
+    oReq.send();
+  }
+}
+
+function outData() {
+  try {
+    if (oReq.readyState === XMLHttpRequest.DONE) {
+      if (oReq.status === 200) {
+        monitorOut.innerHTML += oReq.responseText;
+      } else {
+        monitorOut.innerHTML += 'There was a problem with the request!<br/>';
+      }
+    }
+  } catch (e) {
+    monitorOut.innerHTML += `Caugth Exception: ${e.description}<br/>`;
+  }
+}
+
+function updateProgress (oEvent) {
+  if (oEvent.lengthComputable) {
+    var percentComplete = oEvent.loaded / oEvent.total * 100;
+    monitorOut.innerHTML += `Transferring progress:  ${percentComplete}% <br/>`; 
+  } else {
+    monitorOut.innerHTML += 'Unable to compute progress info since the total size is unknown!<br/>';
+  }
+}
+
+function transferComplete(evt) {
+  monitorOut.innerHTML += 'The transfer is complete!<br/>';
+}
+
+function transferFailed(evt) {
+  monitorOut.innerHTML += 'An error occured while transfering the file!<br/>';
+}
+
+function transferCanceled(evt) {
+  monitorOut.innerHTML += 'The transfer has been canceled by the user!<br/>';
+}
+
