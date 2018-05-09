@@ -31,6 +31,7 @@ fetch('../server-side/send-ajax-data2.php').then(function(response) {
 });
 
 //1.3 Using jQuery methods for doing the same thing:
+/*
 var xhr3 = new XMLHttpRequest();
 xhr3.open('GET', '../server-side/send-ajax-data3.php');
 
@@ -45,6 +46,7 @@ $.ajax({
     console.log('Error: ' + data);
   }
 });
+*/
 
 //2.1 Making a simple request for the server:
 var httpRequest;
@@ -164,4 +166,36 @@ function transferFailed(evt) {
 function transferCanceled(evt) {
   monitorOut.innerHTML += 'The transfer has been canceled by the user!<br/>';
 }
+
+//3.1 Make a simple request using AJAX:
+document.getElementsByTagName('button')[3].onclick = () => {
+  let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('block-request').innerHTML = this.responseText;
+    }
+  };
+  xhttp.open('GET', '../templates/test.xml', true);
+  xhttp.send();
+}
+
+let jsonServer = new Object;
+//3.2 Testing configuration of server request:
+document.getElementsByTagName('button')[4].onclick = () => {
+  const inputs = Array.from(document.getElementsByTagName('input'));
+  console.log(jsonServer);
+  inputs.forEach(input => {
+    if (input.value !== '') {
+      jsonServer[input.name] = input.value;
+      input.style.borderColor = '#0000ff';
+    } else {
+      input.style.borderColor = '#ff0000';
+      jsonServer = {};
+      return;
+    }
+  });
+  console.log(JSON.stringify(jsonServer));
+}
+
+
 
