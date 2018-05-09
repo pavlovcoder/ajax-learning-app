@@ -19,9 +19,8 @@ button {
   transition: all 0.3s ease-out;
   border: none;
   cursor: pointer; }
-
-button:hover {
-  background: #000080; }
+  button:hover {
+    background: #000080; }
 
 input {
   padding: 7px 27px;
@@ -32,12 +31,31 @@ input {
 label {
   font-size: 18px; }
 
-.monitor-output {
+.monitor-output, .block-request {
   border: 1px dotted #000;
   height: 30%;
   padding: 20px;
   margin: 20px 0;
   color: #0000ff;
   font-size: 15px; }
+
+.block-request {
+  color: #000; }
+
+.cell-50 {
+  width: 50%;
+  float: left; }
+  .cell-50 input {
+    width: 80%; }
+  .cell-50 label {
+    color: #000; }
+
+.row {
+  margin: 0; }
+
+button:nth-child(5) {
+  margin: 20px 0; }
+
+/*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */
