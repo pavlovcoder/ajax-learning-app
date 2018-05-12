@@ -179,22 +179,102 @@ document.getElementsByTagName('button')[3].onclick = () => {
   xhttp.send();
 }
 
-let jsonServer = new Object;
 //3.2 Testing configuration of server request:
+let getString = '';
 document.getElementsByTagName('button')[4].onclick = () => {
   const inputs = Array.from(document.getElementsByTagName('input'));
-  console.log(jsonServer);
   inputs.forEach(input => {
     if (input.value !== '') {
-      jsonServer[input.name] = input.value;
       input.style.borderColor = '#0000ff';
+      getString += `${input.name}=${input.value}&`
     } else {
       input.style.borderColor = '#ff0000';
-      jsonServer = {};
       return;
     }
   });
-  console.log(JSON.stringify(jsonServer));
+  getString = getString.slice(0, -1);
+  document.getElementsByClassName('testing-request')[0].style.display = 'none';
+  document.getElementsByClassName('form-message')[0].style.display = 'block';
+  console.log(getString);
+}
+
+//4. AJAX Requests:
+
+let outBlock = Array.from(document.getElementsByClassName('out-block'));
+//4.1 Sending simple request to the server:
+document.getElementsByTagName('button')[5].onclick = () => {
+  let xhttp1 = new XMLHttpRequest();
+  xhttp1.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+  };
+  xhttp1.open('GET', '../server-side/ajax-data-1.php?t=' + Math.random(), true);
+  xhttp1.send();
+}
+
+//4.2 Sending simple request to the server with data:
+document.getElementsByTagName('button')[6].onclick = () => {
+  let xhttp2 = new XMLHttpRequest();
+  xhttp2.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+  };
+  xhttp2.open('GET', `../server-side/ajax-data-1.php?${getString}`, true);
+  xhttp2.send();
+}
+
+//4.3 Sending simple request to the server with POST-method:
+document.getElementsByTagName('button')[7].onclick = () => {
+  let xhttp3 = new XMLHttpRequest();
+  xhttp3.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+  };
+  xhttp3.open('POST', '../server-side/ajax-data-1.php', true);
+  xhttp3.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhttp3.send('fanme=Wlodzimierz&lname=Pavlov');
+}
+
+//4.4 Using a callback function:
+document.getElementsByTagName('button')[8].onclick = () => {
+  loadDoc('../server-side/request1.txt', requestFunction1);
+}
+
+document.getElementsByTagName('button')[9].onclick = () => {
+  loadDoc('../server-side/request2.txt', requestFunction2);
+}
+
+document.getElementsByTagName('button')[10].onclick = () => {
+  loadDoc('../server-side/request3.txt', requestFunction3);
+}
+
+function loadDoc(url, subFunction) {
+  let xhttp4 = new XMLHttpRequest();
+  xhttp4.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      subFunction(this);
+    }
+  };
+  xhttp4.open('GET', url, true);
+  xhttp4.send();
+}
+
+function requestFunction1(xhttp) {
+  console.log('Output from request-1:');
+  console.log(xhttp.responseText);
+}
+
+function requestFunction2(xhttp) {
+  console.log('Output from requet-2:');
+  console.log(xhttp.responseText);
+}
+
+function requestFunction3(xhttp) {
+  console.log('Output from request-3:');
+  console.log(xhttp.responseText);
 }
 
 
