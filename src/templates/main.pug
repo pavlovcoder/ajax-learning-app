@@ -27,6 +27,7 @@ html(lang="en")
           li #[b 102 Processing] A WebDAV request may contain many sub-requests involving file operations, requiring a long time to complete the request. This code indicates that the server has received and is processing the request, but no response is available yet.[7] This prevents the client from timing out and assuming the request was lost.
           li #[b 103 Early Hints] Used to return some response headers before file HTTP message
         button(type='button') Change content
+      h5(class='form-message') Success! Your form was sent to the server.
       div(class='testing-request')
         h5 Testing configuration of server request
         fieldset
@@ -47,5 +48,15 @@ html(lang="en")
               label(for='pass') Password
               input(type='password', id='pass', name='user_pass', required)
           button(type='button') Submit data to the server
-
+      h5 Sending simple request to the server:
+      button(type='button') Send a simple request
+      h5 Sending simple request with the data:
+      button(type='button') Send request with data
+      h5 Sending simple request to the server with POST-method:
+      button(type='button') Send request 
+      h5 Sending multiple requests
+      button(type='button') Send request-1
+      button(type='button') Send request-2
+      button(type='button') Send request-3
+      div(class='out-block')
     script(src='../js/main.js')
