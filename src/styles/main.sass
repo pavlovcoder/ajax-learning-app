@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins')
 
+//Color variables:
+$odd-background: #6666ff
+$even-background: #0000ff
+$font-color: #fff
+
 html, body
   font-family: 'Poppins', sans-serif
   font-size: 23px
@@ -20,6 +25,7 @@ button
   transition: all .3s ease-out
   border: none
   cursor: pointer
+  outline: none
 
 button
   &:hover
@@ -59,3 +65,28 @@ label
   padding: 20px
   text-align: center
   transform: all .5s ease-in
+
+table
+  width: 100%
+  color: $font-color
+
+  tr
+    &:nth-of-type(odd)
+      background: $odd-background
+
+    &:nth-of-type(even)
+      background: $even-background
+
+  
+  td
+    width: 50%
+    text-align: center
+    vertical-align: middle
+    padding: 15px 20px
+    cursor: pointer
+    transition: all .4s ease-out
+
+    &:hover
+      background: $font-color
+      color: $even-background
+
