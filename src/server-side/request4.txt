@@ -1,0 +1,2 @@
+Output from the request-4:
+Getting full header from the server as a response to the server request!
