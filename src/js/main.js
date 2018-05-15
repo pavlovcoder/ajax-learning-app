@@ -277,5 +277,56 @@ function requestFunction3(xhttp) {
   console.log(xhttp.responseText);
 }
 
+//4.5 Getting full response header from the server:
+document.getElementsByTagName('button')[11].onclick = () => {
+  let xhttp5 = new XMLHttpRequest();
+  xhttp5.onreadystatechange = function() {
+    if (this.state == 4 && this.status == 200) {
+      console.log(this.getAllResponseHeaders());
+    }
+  };
+  xhttp5.open('GET', '../server-side/request4.txt', true);
+  xhttp5.send();
+}
+
+//4.6 Getting table with albums as XML-file from the server:
+document.getElementsByTagName('button')[12].onclick = () => {
+  
+}
+
+let xmlBtn = document.getElementsByTagName('button')[12];
+
+xmlBtn.addEventListener('click', loadXML);
+
+function loadXML() {
+  let xhttp6 = new XMLHttpRequest();
+  xhttp6.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      tableCreator(this);
+    }
+  };
+  xhttp6.open('GET', '../server-side/albums.xml', true);
+  xhttp6.send();
+  xmlBtn.removeEventListener('click', loadXML);
+}
+
+function tableCreator(xml) {
+  let xmlResponse = xml.responseXML;
+  console.log(xmlResponse);
+  let table = '<table><tr><th>Artist</th><th>Title</th></tr>';
+  let cd = Array.from(xmlResponse.getElementsByTagName('CD'));
+  console.log(cd);
+  let outBlock = document.getElementsByClassName('out-block')[0];
+  cd.forEach(rel => {
+    table += '<tr><td>' +
+    rel.getElementsByTagName('ARTIST')[0].childNodes[0].nodeValue +
+    '</td><td>' +
+    rel.getElementsByTagName('TITLE')[0].childNodes[0].nodeValue +
+    '</td></tr>';    
+  });
+  table += '</table>';
+  outBlock.style.display = 'block';
+  outBlock.innerHTML = table;
+}
 
 
