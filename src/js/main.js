@@ -329,4 +329,26 @@ function tableCreator(xml) {
   outBlock.innerHTML = table;
 }
 
+//4.7 Implementation AJAX-PHP dynamic search panel:
+let ajaxInput = document.getElementById('ajax-search-id');
+ajaxInput.onkeyup = function() {
+  var xhtt7;
+  var str = ajaxInput.value;
+  if (str.length == 0) { 
+    document.getElementById("search-result").innerHTML = "";
+    return;
+  }
+  xhttp7 = new XMLHttpRequest();
+  xhttp7.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      document.getElementById("search-result").innerHTML = this.responseText;
+    }
+  };
+  xhttp7.open("GET", "../server-side/search-ajax-data.php?q="+str, true);
+  xhttp7.send();
+  console.error(letObject);
+  console.error(element_property) 
+}
+
 
