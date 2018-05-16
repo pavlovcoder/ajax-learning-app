@@ -63,4 +63,11 @@ html(lang="en")
       h5 Get XML-file from the server:
       button(type='button') Get albums
       div(class='out-block')
+      h5 Dynamic AJAX-PHP search panel:
+      form(action='')
+        label(for='ajax-search') Enter your country#[br]
+          input(type='text', id='ajax-search-id', placeholder='Enter your country...')
+      div(class='out-search')
+        div(class='out-search-left') Suggestions: 
+        div(class='out-search-right', id='search-result')
     script(src='../js/main.js')
