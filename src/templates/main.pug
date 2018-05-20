@@ -70,4 +70,9 @@ html(lang="en")
       div(class='out-search')
         div(class='out-search-left') Suggestions: 
         div(class='out-search-right', id='search-result')
+      h5 Dynamic AJAX-ASP search panel:
+      form(action='')
+        label(for='first_name')
+          input(type='text', id='first_name')
+      p Suggestions: #[span(id='txtHint')]
     script(src='../js/main.js')

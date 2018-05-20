@@ -18,9 +18,11 @@ button {
   color: #fff;
   transition: all 0.3s ease-out;
   border: none;
-  cursor: pointer; }
-  button:hover {
-    background: #000080; }
+  cursor: pointer;
+  outline: none; }
+
+button:hover {
+  background: #000080; }
 
 input {
   padding: 7px 27px;
@@ -31,7 +33,7 @@ input {
 label {
   font-size: 18px; }
 
-.monitor-output, .block-request {
+.monitor-output {
   border: 1px dotted #000;
   height: 30%;
   padding: 20px;
@@ -39,23 +41,71 @@ label {
   color: #0000ff;
   font-size: 15px; }
 
-.block-request {
-  color: #000; }
+.out-block {
+  border: 1px dotted #000000;
+  height: auto;
+  padding: 20px;
+  margin: 20px 0;
+  color: #0000ff;
+  font-size: 15px;
+  display: none; }
 
-.cell-50 {
-  width: 50%;
+.form-message {
+  display: none;
+  background-color: #0000ff;
+  color: #ffffff;
+  border: 1px solid #fff;
+  padding: 20px;
+  text-align: center;
+  transform: all 0.5s ease-in; }
+
+table {
+  width: 100%;
+  color: #fff; }
+  table tr:nth-of-type(odd) {
+    background: #6666ff; }
+  table tr:nth-of-type(even) {
+    background: #0000ff; }
+  table td {
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.4s ease-out; }
+    table td:hover {
+      background: #fff;
+      color: #0000ff; }
+
+.out-search {
+  padding: 0;
+  background: #0000ff;
+  margin: 30px 0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  position: relative;
+  width: 100%;
+  position: relative;
+  height: 38px; }
+
+.out-search-left {
+  width: 20%;
+  border-right: 2px solid #ffffff;
+  text-align: center;
+  margin: 0;
+  padding: 5px 0;
   float: left; }
-  .cell-50 input {
-    width: 80%; }
-  .cell-50 label {
-    color: #000; }
 
-.row {
-  margin: 0; }
+.out-search-right {
+  width: 75%;
+  text-align: left;
+  padding: 5px 0 5px 2%;
+  float: left;
+  font-weight: 400;
+  color: #fff; }
 
-button:nth-child(5) {
-  margin: 20px 0; }
-
-/*# sourceMappingURL=main.css.map */
+#ajax-search-id {
+  width: 50%; }
 
 /*# sourceMappingURL=main.css.map */

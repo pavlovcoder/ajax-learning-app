@@ -351,4 +351,28 @@ ajaxInput.onkeyup = function() {
   console.error(element_property) 
 }
 
+//5. AJAX & ASP Requests:
+
+//5.1 Implementation AJAX-ASP dynamic search panel:
+let ajaxAspInput = document.getElementById('first_name');
+ajaxAspInput.onkeyup = function() {
+  showHint(ajaxAspInput.value);
+}
+
+function showHint(str) {
+  var xhttp;
+  if (str.length == 0) { 
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "gethint.asp?q="+str, true);
+  xhttp.send();
+}
+
 
