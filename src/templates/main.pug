@@ -75,4 +75,20 @@ html(lang="en")
         label(for='first_name')
           input(type='text', id='first_name')
       p Suggestions: #[span(id='txtHint')]
+      h5 Choose personal data from (ACD) - "American Citizen's Database":
+      form
+        select(name='citizens', class='citizens-selector')
+          option(value='') Select a person:
+          option(value='1') Alfred Novel
+          option(value='2') James Mac-Flew
+          option(value='3') Adelaida Juniesku
+          option(value='4') Brandon Schmidt
+          option(value='5') Sentiego Loious-Da Silva
+          option(value='6') Clar Sven
+          option(value='7') Muhamed Al-Jeeran
+          option(value='8') Eva Edwinson
+          option(value='9') Vladimir Pavlov
+          option(value='10') Barbara Kloszynska
+      div(class='citizens-output')
+        p Personal data will be here... Please choose appropriated data from selector.
     script(src='../js/main.js')

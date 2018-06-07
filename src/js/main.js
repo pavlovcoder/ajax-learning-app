@@ -375,4 +375,29 @@ function showHint(str) {
   xhttp.send();
 }
 
+//6. Creating PHP & MySQL dynamic queries for getting data from the table:
+
+document.getElementsByClassName('citizens-selector')[0].onchange = function() {
+  let str = this.value;
+  let output = document.getElementsByClassName('citizens-output')[0];
+  if (str == '') {
+    output.innerHTML = '';
+    return;
+  }
+
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+  }
+  
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      output.innerHTML = this.responseText;
+    }
+  }
+  xmlhttp.open('GET', '../server-side/american_citizens.php?q=' + str, true);
+  xmlhttp.send();
+}
+
 
