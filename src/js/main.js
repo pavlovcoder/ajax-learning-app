@@ -396,7 +396,7 @@ document.getElementsByClassName('citizens-selector')[0].onchange = function() {
       output.innerHTML = this.responseText;
     }
   }
-  xmlhttp.open('GET', '../server-side/american_citizens.php?q=' + str, true);
+  xmlhttp.open('GET', '../server-side/american-citizens.php?q=' + str, true);
   xmlhttp.send();
 }
 
