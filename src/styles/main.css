@@ -61,7 +61,8 @@ label {
 
 table {
   width: 100%;
-  color: #fff; }
+  color: #fff;
+  margin: 20px 0; }
   table tr:nth-of-type(odd) {
     background: #6666ff; }
   table tr:nth-of-type(even) {

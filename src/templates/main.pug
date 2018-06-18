@@ -3,6 +3,7 @@ html(lang="en")
   head
     title AJAX App
     link(rel='stylesheet', href='../styles/main.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='icon', href='../img/favicon.png', sizes='16x16 32x32', type='image/png')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
 
@@ -92,5 +93,9 @@ html(lang="en")
       div(class='citizens-output')
         p Personal data will be here... Please choose appropriated data from selector.
       h5 Get my CD-collection:
-        
+      button(type='button') Get full CD-collection
+      table(id='cd-collection')
+      h5 Getting element from cd-collection using next-prev buttons:
+      div(class='show-collection')
+      //- We'll continue tomorrow from this place :)
     script(src='../js/main.js')

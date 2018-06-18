@@ -400,4 +400,35 @@ document.getElementsByClassName('citizens-selector')[0].onchange = function() {
   xmlhttp.send();
 }
 
+//7. Getting full table with CD-collection:
+document.getElementsByTagName('button')[13].onclick = function() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      getFullCDCollection(this);
+    }
+  };
+  xmlhttp.open('GET', '../server-side/cd_collection.xml', true);
+  xmlhttp.send();
+}
+
+function getFullCDCollection(xml) {
+  let i;
+  let xmlDoc = xml.responseXML;
+  let table = "<tr><th>Artist</th><th>Title</th></tr>";
+  let x = xmlDoc.getElementsByTagName('CD');
+  for (let i=0; i < x.length; i++) {
+    table += '<tr><td>' + 
+    x[i].getElementsByTagName('ARTIST')[0].childNodes[0].nodeValue + 
+    '</td><td>' + 
+    x[i].getElementsByTagName('TITLE')[0].childNodes[0].nodeValue + 
+    '</td></tr>';
+  }
+  document.getElementById('cd-collection').innerHTML = table;
+}
+
+//8. Getting element from cd-collection using next-prev buttons:
+
+
+
 
